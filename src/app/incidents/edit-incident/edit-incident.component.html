@@ -1,0 +1,136 @@
+<main class="container">
+  <div class="row">
+    <div class="offset-md-3 col-md-6">
+      <button mat-raised-button class="btn-link">
+        <a [routerLink]="['/incidents']" routerLinkActive="router-link-active" class="cancel">
+          <i class="fas fa-undo"></i>
+          Back
+        </a>
+      </button>
+    </div>
+    <div class="row">
+      <h1 class="title text-center mb-5" *ngIf ="incident.status != Incidents_status.CLOSED" >Edit Incident</h1>
+      <h1 class="title text-center mb-5" *ngIf ="incident.status == Incidents_status.CLOSED">View Incident</h1>
+      <mat-card class="form">
+        <br>
+
+        <mat-form-field class="example-full-width control" appearance="fill">
+          <mat-label>Record</mat-label>
+          <input matInput [(ngModel)]="incident.recordNumber" name="record" disabled>
+        </mat-form-field>
+
+        <br>
+
+        <mat-form-field class="example-full-width control" appearance="fill">
+          <mat-label>Description</mat-label>
+          <input matInput [(ngModel)]="incident.description" [disabled]="incident.status == Incidents_status.CLOSED">
+        </mat-form-field>
+
+        <br>
+
+        <mat-form-field class="example-full-width control" appearance="fill">
+          <mat-label>Priority</mat-label>
+          <select matNativeControl [(ngModel)]="incident.priority"  name="priority" [disabled]="incident.status == Incidents_status.CLOSED">
+            <option value="0">High</option>
+            <option value="1">Medium</option>
+            <option value="2">Low</option>
+          </select>
+        </mat-form-field>
+
+        <br>
+
+        <mat-form-field class="example-full-width control" appearance="fill">
+          <mat-label>Status</mat-label>
+          <select  matNativeControl [(ngModel)]="incident.status" name="status" [disabled]="incident.status == Incidents_status.CLOSED">
+            <option value="0" disabled>Closed</option>
+            <option value="1">New</option>
+            <option value="2">In Progress</option>
+            <option value="3">On Hold</option>
+            <option value="4">Dispatched</option>
+          </select>
+        </mat-form-field>
+
+        <br>
+
+        <div class="row d-flex justify-content-center mt-100 mb-100">
+          <div class="col-12">
+              <div class="card">
+                  <div class="card-body text-center">
+                      <h4 class="card-title">Narrative</h4>
+                  </div>
+                  <mat-form-field class="example-full-width control" appearance="fill"  *ngIf ="incident.status != Incidents_status.CLOSED">
+                    <mat-label>Add a comment</mat-label>
+                    <input matInput [(ngModel)]="inputComment">
+                  </mat-form-field>
+                  <div class="comment-widgets" >
+                      <!-- Comment Row -->
+                      <div class="d-flex flex-row comment-row" *ngFor="let comment of incident.narrative" >
+                          <div class="p-2"><img src="/assets/customerpic.png" alt="user" width="50" class="rounded-circle"></div>
+                          <div class="comment-text w-100">
+                              <h6 class="font-medium">{{comment.timestamp}}</h6> <span class="m-b-15 d-block">{{comment.comment}}</span>
+                            </div>
+                      </div> <!-- Comment Row -->
+                  </div> <!-- Card -->
+              </div>
+          </div>
+      </div> 
+        <br>
+
+        
+        <br>
+
+        <h3 class="text-center  fs-5 text-decoration-underline">Customer Information</h3>
+        <!-- <mat-divider></mat-divider> -->
+        <br>
+
+        <mat-form-field class="example-full-width control" appearance="fill">
+          <mat-label>Name</mat-label>
+          <input matInput [(ngModel)]="incident.name"  [disabled]="incident.status == Incidents_status.CLOSED" >
+        </mat-form-field>
+
+        <br>
+
+        <mat-form-field class="example-full-width control" appearance="fill">
+          <mat-label>Email</mat-label>
+          <input matInput [(ngModel)]="incident.email"  [disabled]="incident.status == Incidents_status.CLOSED" >
+        </mat-form-field>
+
+        <br>
+
+        <mat-form-field class="example-full-width control" appearance="fill">
+          <mat-label>Address</mat-label>
+          <input matInput [(ngModel)]="incident.address"  [disabled]="incident.status == Incidents_status.CLOSED">
+        </mat-form-field>
+
+        <br>
+
+        <mat-form-field class="example-full-width control" appearance="fill">
+          <mat-label>Phone Number</mat-label>
+          <input matInput [(ngModel)]="incident.phoneNumber"  [disabled]="incident.status == Incidents_status.CLOSED">
+        </mat-form-field>
+
+        <br>
+
+        <mat-form-field class="example-full-width control" appearance="fill" *ngIf ="incident.status == Incidents_status.CLOSED">
+          <mat-label>Incident Duration</mat-label>
+          <input matInput [(ngModel)]="incident.incidentDuration"  disabled>
+        </mat-form-field>
+
+        <br>
+
+        <mat-form-field class="example-full-width control" appearance="fill" *ngIf ="incident.status == Incidents_status.CLOSED">
+          <mat-label>Incident Resolution</mat-label>
+          <input matInput [(ngModel)]="incident.incidentResolution" disabled>
+        </mat-form-field>
+
+        <br>
+
+        <button (click)="editIncident()" mat-raised-button color="primary" class="submit-btn"  [disabled]="incident.status == Incidents_status.CLOSED" >
+          Update
+        </button>
+        <br>
+        <br>
+      </mat-card>
+    </div>
+  </div>
+</main>

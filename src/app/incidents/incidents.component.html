@@ -1,0 +1,77 @@
+<div class="main">
+  <div class="dashboard-btn">
+    <div>
+      <a [routerLink]="['/incidents/create']" routerLinkActive="router-link-active" id="new-report" class="btn btn-dark" role="button">
+        <i class="fas fa-plus-circle"></i>
+        New Incident Report
+      </a>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="offset-8 col-3 form-check">
+      <label class="form-check-label" for="showClose">Show close incidents</label>
+      <input class="form-check-input" type="checkbox" id="showClose" name="showClose" [(ngModel)]="showClose">
+    </div>
+  </div>
+  <br>
+
+  <table mat-table [dataSource]='incidents' class="mat-elevation-z8 demo-table">
+
+    <!-- Templates -->
+    <ng-container matColumnDef="record">
+      <th class="text-center" mat-header-cell *matHeaderCellDef>Record</th>
+      <td mat-cell *matCellDef="let element">{{element.recordNumber}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="date">
+      <th class="text-center" mat-header-cell *matHeaderCellDef>Date</th>
+      <td mat-cell *matCellDef="let element">{{element.date}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="description">
+      <th class="text-center" mat-header-cell *matHeaderCellDef>Description</th>
+      <td mat-cell *matCellDef="let element">{{element.description}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="close">
+      <th class="text-center" mat-header-cell *matHeaderCellDef>Status</th>
+      <td mat-cell *matCellDef="let element">
+        <div class="text-center">
+          <a routerLink='/incidents/{{element._id}}/close' class="btn btn-secondary btn-sm" *ngIf = "element.status !=  Incidents_status.CLOSED">
+            <i class="fas fa-folder-minus"></i> Close</a>
+        </div>
+        <div class="text-center" *ngIf = "element.status ==  Incidents_status.CLOSED" >Closed </div>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="edit">
+      <th class="text-center" mat-header-cell *matHeaderCellDef>Edit / View</th>
+      <td class="table-bordered" mat-cell *matCellDef="let element">
+        <div class="text-center">
+          <a routerLink='/incidents/{{element._id}}/edit' class="btn btn-primary btn-sm" *ngIf = "element.status !=  Incidents_status.CLOSED">
+            <i class="fas fa-pencil-alt"></i> Edit</a>
+          <a routerLink='/incidents/{{element._id}}/edit' class="btn btn-primary btn-sm" *ngIf = "element.status ==  Incidents_status.CLOSED">
+            <i class="fas fa-eye"></i> View</a>
+        </div>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="delete">
+      <th class="text-center" mat-header-cell *matHeaderCellDef>Delete</th>
+      <td mat-cell *matCellDef="let element">
+        <div class="text-center">
+          <a routerLink='/incidents/{{element._id}}/delete' class="btn btn-danger btn-sm">
+            <i class="fas fa-trash-alt"></i> Delete</a>
+        </div>
+      </td>
+    </ng-container>
+    <!-- End templates -->
+
+
+    <!-- Render -->
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" [hidden]="row.status == Incidents_status.CLOSED && showClose == false"></tr>
+  </table>
+
+</div>

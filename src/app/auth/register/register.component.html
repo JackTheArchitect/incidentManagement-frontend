@@ -1,0 +1,58 @@
+<!-- Content for the Register page -->
+<main class="container">
+  <!-- Message Area -->
+  <div class="bg-danger mt-2 p-2 text-center text-white"
+  *ngIf="message != null">
+  {{message}}
+</div>
+  <!-- Register form -->
+  <div class="row">
+    <h1 class= "text-center" id="registertitle"> User Registration</h1>
+    <form class= "" id="registerform" #form="ngForm" (ngSubmit)="authenticate(form)" autocomplete="off" validate>
+      <div class="field">
+        <label class="label" for="firstname" name="firstname">First Name:</label>
+        <input type="text" class="form-control" placeholder="" id="firstname" [(ngModel)]="user.firstName"required name="firstName">
+      </div>
+      <div class="field">
+        <label class="label" for="lastname" name="lastname">Last Name:</label>
+        <input type="text" class="form-control" placeholder="" id="lastname" [(ngModel)]="user.lastName" required name="lastName">
+      </div>
+      <div class="field">
+        <label class="label" for="username" name="username">User Name:</label>
+        <input type="text" class="form-control" placeholder="" id="username" [(ngModel)]="user.username" required name="username">
+      </div>
+      <div class="field">
+        <label class="label" for="email" Name="email">Email:</label>
+        <input type="text" class="form-control" placeholder="" id="email" [(ngModel)]="user.email" required name="email">
+      </div>
+      <div class="field">
+        <label class="label" for="password" Name="password">Password:</label>
+        <input type="password" class="form-control" placeholder="" id="password" [(ngModel)]="user.password" required name="password">
+      </div>
+      <div class="field">
+        <label class="label" for="confirm-password" Name="confirmpassword">Confirm Password:</label>
+        <input type="password" class="form-control" placeholder="" id="confirm_password" [(ngModel)]="confirmpassword" required name="confirmpassword">
+      </div>
+
+      <div class="field">
+        <input type="checkbox" id="admin" [(ngModel)]="user.admin" name="userType" value="Admin" class="adminCheck">
+        <label class="label" for="admin" Name="admin">Administrator:</label>
+      </div>
+
+
+      <div class="btns">
+        <button class="btn btn-dark btn-sm" type="submit" >Register</button>
+        <button class="btn btn-outline-dark"><a href="#" class = "cancel" >Cancel</a></button>
+      </div>
+
+      <div class="text-center">
+        Current user?
+        <a id="signinlink" href="/user/signin" >
+          Sign-in
+        </a>
+      </div>
+    </form>
+  </div>
+</main>
+
+

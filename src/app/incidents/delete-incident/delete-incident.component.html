@@ -1,0 +1,13 @@
+
+<main>
+    <mat-card class="form">
+        <h1 class="title">Are You Sure?</h1>
+        <div class="btn-container">
+            <button (click)="delete()" mat-raised-button color="warn" class="btn">Yes</button>
+            <button [routerLink]="['/incidents']" 
+            routerLinkActive="router-link-active" 
+            mat-raised-button 
+            class="btn">no</button>
+        </div>
+    </mat-card>
+</main>

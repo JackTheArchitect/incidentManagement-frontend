@@ -1,0 +1,30 @@
+main {
+  width: 80%;
+  margin: auto;
+}
+
+.title {
+  font-size: 2em;
+  margin: 20px 0;
+  text-align: center;
+}
+
+.btn-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.btn {
+  margin: 20px;
+  width: 100px;
+}
+
+.form {
+  margin: 100px auto;
+  width: 50%;
+}
+
+.input_full{
+  width: 100%;
+}

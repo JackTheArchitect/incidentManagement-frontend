@@ -1,0 +1,11 @@
+main {
+    width: 80%;
+    height: 100%;
+    margin: auto;
+}
+
+#bg {
+    height: 600px;
+    background-image: url("/assets/topimage8.png");
+    background-repeat:no-repeat;
+  }

@@ -1,0 +1,21 @@
+<main>
+    <div ml-2 id="bg">
+        <h1 class="pt-3 pb-5 px-3 fs-2 ">Welcome to Incident Management</h1>
+        <!-- <span class="topimage"><img src="/assets/topimage5.jpg" alt="topimage" width="700" height="500" ></span>  -->
+        <div class="px-5 pt-2">
+            <div class="d-inline p-4">
+                <a [routerLink]="['/incidents/create']" routerLinkActive="router-link-active"  class="btn btn-dark btn-sm" role="button">
+                <i class="fas fa-plus-circle"></i>
+                New Incident Report
+                </a>
+            </div>
+
+            <div class="d-inline p-4">
+                <a [routerLink]="['/incidents']" routerLinkActive="router-link-active" class="btn btn-primary btn-sm" role="button">
+                <i class="fas fa-th-list"></i>
+                Go to Dashboard
+                </a>
+            </div>
+        </div>
+    </div>
+</main>

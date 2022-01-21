@@ -1,0 +1,31 @@
+<!-- Content for the Register page -->
+<main class="container">
+    <!-- Message Area -->
+    <div class="bg-danger mt-2 p-2 text-center text-white"
+    *ngIf="message != null">
+    {{message}}
+  </div>
+    <!-- Update User form -->
+    <div class="row">
+      <h1 class= "text-center" id="updatetitle"> Edit User</h1>
+      <form class= "" id="updateform" #form="ngForm" (ngSubmit)="authenticate(form)" autocomplete="off" validate>
+        <div class="field">
+          <label class="label" for="firstname" name="firstname">First Name:</label>
+          <input type="text" class="form-control" placeholder="" id="firstname" [(ngModel)]="user.firstName" required name="firstName">
+        </div>
+        <div class="field">
+          <label class="label" for="lastname" name="lastname">Last Name:</label>
+          <input type="text" class="form-control" placeholder="" id="lastname" [(ngModel)]="user.lastName" required name="lastName">
+        </div>
+        <div class="field">
+          <label class="label" for="email" Name="email">Email:</label>
+          <input type="text" class="form-control" placeholder="" id="email" [(ngModel)]="user.email" required name="email">
+        </div>  
+        <div class="btns">
+          <button class="btn btn-dark btn-sm" type = "submit">Update</button>
+          <button class="btn btn-outline-dark"><a href="#" class = "cancel" >Cancel</a></button>
+        </div>
+  
+      </form>
+    </div>
+  </main>

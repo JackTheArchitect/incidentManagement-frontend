@@ -1,0 +1,95 @@
+<main class="container">
+  <div class="row">
+    <div class="offset-md-3 col-md-6">
+      <button mat-raised-button class="btn-link">
+        <a [routerLink]="['/incidents']" routerLinkActive="router-link-active" class="cancel">
+          <i class="fas fa-undo"></i>
+          Back
+        </a>
+      </button>
+    </div>
+    <div class="row">
+      <h1 class="title text-center mb-5">Create New Incident</h1>
+      <mat-card class="form">
+        <br>
+
+        <mat-form-field class="example-full-width control" appearance="fill">
+          <mat-label>Record</mat-label>
+          <input matInput [(ngModel)]="incident.recordNumber" name="record" disabled>
+        </mat-form-field>
+
+        <br>
+
+        <mat-form-field class="example-full-width control" appearance="fill">
+          <mat-label>Description</mat-label>
+          <input matInput [(ngModel)]="incident.description" name="description">
+        </mat-form-field>
+
+        <br>
+
+        <mat-form-field class="example-full-width control" appearance="fill">
+          <mat-label>Priority</mat-label>
+          <select matNativeControl [(ngModel)]="incident.priority"  name="priority">
+            <option value="0"> High</option>
+            <option value="1"> Medium</option>
+            <option value="2"> Low</option>
+          </select>
+        </mat-form-field>
+
+        <br>
+
+        <mat-form-field class="example-full-width control" appearance="fill">
+          <mat-label>Narrative</mat-label>
+          <input matInput [(ngModel)]="narrativeInit" name="narrativeInit">      
+        </mat-form-field>
+
+        <br>
+
+        <br>
+
+        <h3 class="text-center  fs-5 text-decoration-underline">Customer Information</h3>
+      <!-- <mat-divider></mat-divider> -->
+
+        <br>
+
+        <mat-form-field class="example-full-width control" appearance="fill">
+          <mat-label>Name</mat-label>
+          <input matInput [(ngModel)]="incident.name" name="name">
+        </mat-form-field>
+
+        <br>
+
+        <mat-form-field class="example-full-width control" appearance="fill">
+          <mat-label>Email</mat-label>
+          <input matInput [(ngModel)]="incident.email" name="email">
+        </mat-form-field>
+
+        <br>
+
+        <mat-form-field class="example-full-width control" appearance="fill">
+          <mat-label>Address</mat-label>
+          <input matInput [(ngModel)]="incident.address" name="address">
+        </mat-form-field>
+        
+        <br>
+
+        <mat-form-field class="example-full-width control" appearance="fill">
+          <mat-label>Phone Number</mat-label>
+          <input matInput [(ngModel)]="incident.phoneNumber" name="phoneNumber">
+        </mat-form-field>
+
+        <br>
+
+        <button mat-raised-button  class="submit-btn btn-dark" type="submit"
+                (click)="createIncident()">
+          Create
+        </button>
+
+        <br>
+        <br>
+
+      </mat-card>
+    </div>
+    </div>
+</main>
+

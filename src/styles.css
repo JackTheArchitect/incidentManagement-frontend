@@ -1,0 +1,15 @@
+.container {
+  min-height: 100%;
+  height: auto;
+  /* padding-top: 6em; */
+  padding-bottom: 6em;
+  margin: 0 auto -52px;
+}
+
+.container-footer{
+  margin-left: 4em;
+}
+
+.container-header{
+  margin-bottom: 8em;
+}
