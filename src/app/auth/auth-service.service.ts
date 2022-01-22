@@ -10,7 +10,7 @@ import { User } from '../model/user.model';
 })
 export class AuthServiceService {
 
-  private urlServer ='https://comp229-group-project.herokuapp.com/users';
+  private urlServer ='https://incident-management-backend.herokuapp.com/users';
 
   private _redirectUrl: string;
   public onTokenChange: () => void; // callback for the header name

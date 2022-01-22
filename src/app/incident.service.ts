@@ -32,7 +32,7 @@ export interface IIncident {
 
 export class IncidentService {
 
-  private urlServer = 'https://comp229-group-project.herokuapp.com';
+  private urlServer = 'https://incident-management-backend.herokuapp.com';
 
   constructor(
     private http: HttpClient
